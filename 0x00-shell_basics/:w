@@ -1,2 +1,0 @@
-#!/bin/bash
-cd /tmp cd my_first_directory rm -d my_first_directory\n
