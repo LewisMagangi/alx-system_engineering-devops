@@ -1,2 +1,2 @@
 #!/bin/bash
-sed -i 's/A/Z/g' 19-AZ sed -i 's/c/e/g' 19-AZ
+sed -i 's/A/Z/g'19-AZ sed -i 's/c/e/g'19-AZ
