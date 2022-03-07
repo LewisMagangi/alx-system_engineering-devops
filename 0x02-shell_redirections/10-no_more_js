@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type f -10-no_more_js '*.js' -exec rm -f {} \;
+rm -f */*/*.js
