@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# This script is displaying "Bestx School" 10 times
-counter=0
-until [ $counter -eq 10 ]
+#Write a Bash script that displays Best School 10 times. You must use until loop(for and while are forbidden)
+i=1
+until [ $i -gt 10 ];
 do
-	echo Best School
-	((counter++))
+    echo "Best School"
+    ((i++))
 done
