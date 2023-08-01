@@ -1,18 +1,24 @@
 #!/usr/bin/env bash
-# This script is displaying "bad luck from China" in the 4th iteration,
-# "bad luck from from Japan" in the 9th iteration,
-# and "bad luck from Italy" in the 17th iteration. Otherwise it prints the num.
-counter=1
-while [ $counter -le 20 ]
-do
-	echo $counter
-	case $counter in
-	4) echo bad luck from China
-	;;
-	9) echo bad luck from Japan
-	;;
-	17) echo bad luck from Italy
-	;;
-	esac
-	((counter++))
+#Write a Bash script that displays numbers from 1 to 20 and:
+
+#displays 4 and then bad luck from China for the 4th loop iteration
+#displays 9 and then bad luck from Japan for the 9th loop iteration
+#displays 17 and then bad luck from Italy for the 17th loop iteration.You must use the while loop and a case statement(for and until are forbidden)
+i=1
+while [ $i -le 20 ]; do
+      case $i in
+	  4)
+	      echo "bad luck from China"
+	      ;;
+	  8)
+	      echo "bad luck from Japan"
+	      ;;
+	  17)
+	      echo "bad luck from Italy"
+	      ;;
+	  *)
+	      echo $i
+	      ;;
+      esac
+      ((i++))
 done
