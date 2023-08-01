@@ -8,10 +8,10 @@ h=0
 m=1
 while [ $h -le 12 ];
 do
-    echo "Hour: $h"
+    echo Hour: $h
     while [ $m -le 59 ];
     do
-	echo "$m"
+	echo $m
 	((m++))
     done
     m=1
