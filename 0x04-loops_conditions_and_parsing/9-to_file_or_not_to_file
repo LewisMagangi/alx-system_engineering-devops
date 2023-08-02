@@ -22,11 +22,11 @@ then
     if [ -f "school" ]
     then
 	echo "school is a regular file"
-    elif [ ! -s "school" ]
+    fi
+    if [ ! -s "school" ]
     then
 	echo "school file is empty"
-    elif [ -s "school" ]
-    then
+    else
 	echo "school file is not empty"
     fi
 else
