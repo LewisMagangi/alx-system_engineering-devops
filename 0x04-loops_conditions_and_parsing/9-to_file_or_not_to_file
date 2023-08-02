@@ -14,7 +14,7 @@
 #if the file is not a regular file: (nothing)
 
 # file exists
-if [[ -f "school" ]] ;
+if [[ -e "school" ]] ;
 then
 
     # This will printed if condition is True
