@@ -7,10 +7,5 @@ In a list format
 Where only the part of the name after the first dash is displayed (refer to the example)
 """
 for file in *; do
-    # Check if the files not hidden and contains a dash in the name
-    if [[ ! "$file" =~ ^\. && "$file" =~ .*-.* ]]; then
-	# Extract the part after the first dash
-	part_after_dash=${file#*-}
-	echo "$part_after_dash"
-    fi
+    find "$file" | cut -d"-" -f2-
 done
