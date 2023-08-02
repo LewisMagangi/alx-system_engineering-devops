@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# This script prints "To infinity and beyond" forever.
-while true
+#Write a Bash script that displays To infinity and beyond indefinitely.
+while :
 do
-	echo To infinity and beyond
-	sleep 2
+    echo "To infinity and beyond"
+    sleep 2
 done
