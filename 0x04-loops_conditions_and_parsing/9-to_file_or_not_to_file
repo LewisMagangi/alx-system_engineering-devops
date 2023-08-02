@@ -25,7 +25,7 @@ then
     elif [ -s "school" ]
     then
 	echo "school file is not empty"
-    elif [ -f "school" ]
+    if [ -f "school" ]
     then
 	echo "school is a regular file"
     fi
