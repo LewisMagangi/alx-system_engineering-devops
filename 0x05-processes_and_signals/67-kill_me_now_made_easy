@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
-# This script kills the process of task 4
+#We stopped our 7-highlander process using ctrl+c in the previous task, there is actually another way to do this.
+#Write a Bash script that stops 7-highlander process.
+#You cannot use kill or killallkill
 pkill -f 7-highlander
