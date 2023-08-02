@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
-# This script displays all the files in the current folder removing everything before the first "-" (included)
-for file in *
-do
-	find "$file" | cut -d"-" -f2-
+#Write a Bash script that displays:
+
+"""
+The content of the current directory
+In a list format
+Where only the part of the name after the first dash is displayed (refer to the example)
+"""
+for file in *; do
+    # Check if the files not hidden and contains a dash in the name
+    if [[ ! "$file" =~ ^\. && "$file" =~ .*-.* ]]; then
+	# Extract the part after the first dash
+	part_after_dash=${file#*-}
+	echo "$part_after_dash"
+    fi
 done
