@@ -1,0 +1,12 @@
+#!/bin/bash
+
+GITHUB_USERNAME="Username"
+PAT="Personal_Access_Token"
+
+# Get the list of repositories for the user
+REPOS=$(curl -s -H "Authorization: token $PAT" "https://api.github.com/users/$GITHUB_USERNAME/repos" | grep -o 'clone_url": "https://[^"]*' | sed 's/clone_url": "//')
+
+# Loop through the list and clone each repository
+for REPO_URL in $REPOS; do
+    git clone "$REPO_URL"
+done
