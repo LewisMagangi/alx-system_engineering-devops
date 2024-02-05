@@ -1,2 +1,7 @@
 #!/usr/bin/env bash
-netstat -tuln | grep LISTEN
+
+ss -tuln | awk 'NR > 1 {print $5}' | while read -r local; do
+    pid=$(ss -tulnp | grep "$local" | awk '{print $6}' | cut -d= -f2)
+    program_name=$(ps -p "$pid" -o comm=)
+    echo "Port: $local, PID: $pid, Program: $program_name"
+done
