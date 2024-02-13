@@ -12,4 +12,4 @@ USERNAME=$3
 PATH_TO_SSH_KEY=$4
 
 # Transfer file using SCP
-scp -i "$PATH_TO_SSH_KEY" "$PATH_TO_FILE" "$USERNAME"@"$IP":/~/
+scp -i "$PATH_TO_SSH_KEY" "$PATH_TO_FILE" "$USERNAME"@"$IP":~/
