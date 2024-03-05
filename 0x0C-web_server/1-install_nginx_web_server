@@ -1,24 +1,8 @@
 #!/usr/bin/env bash
 #a Bash script that configures a new Ubuntu machine to respect above requirements (this script will be run on the server itself)
 
+#Updating and Installing Nginx
 sudo apt-get update
-sudo apt-get install -y nginx
-
-# IP Address
-ip_address="52.91.137.2"
-
-# Configure nginx to listen on port 80 and return "Hello World!" at root
-sudo bash -c "cat > /etc/nginx/sites-available/default" <<EOF
-EOF
-server {
-    listen 80;
-    server_name $ip_address;
-
-    location / {
-        echo "Hello World!";
-    }
-}
-EOF
-
-# Restart nginx to apply changes
-sudo service nginx restart
+sudo apt-get -y install nginx
+echo 'Hello World!' > /var/www/html/index.html
+service nginx start
