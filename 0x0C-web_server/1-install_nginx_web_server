@@ -1,25 +1,26 @@
 #!/usr/bin/env bash
 #a Bash script that configures a new Ubuntu machine to respect above requirements (this script will be run on the server itself)
 
-# Install nginx
-sudo apt install -y nginx
+sudo apt-get update
+sudo apt-get install -y nginx
 
-# Create a temporary file to store the default nginx configuration
-temp_config=$(mktemp)
+# IP Address
+ip_address="52.91.137.2"
 
-# Write the nginx configuration to the temporary file
-cat <<EOF > $temp_config
+# Configure nginx to listen on port 80 and return "Hello World!" at root
+sudo bash -c "cat > /etc/nginx/sites-available/default" <<EOF
+EOF
 server {
     listen 80;
-    server_name 52.91.137.2;
+    server_name $ip_address;
+
     location / {
-	return 200 "Hello World!\n";
+        echo "Hello World!";
     }
 }
 EOF
 
-# Replace the default nginx configuration with the custom configuration
-sudo mv $temp_config /var/www/html/index.html
+# Restart nginx to apply changes
+sudo service nginx restart
 
-# Reload nginx to apply the changes
-sudo service nginx reload
+EOF
