@@ -1,32 +1,7 @@
 #!/usr/bin/env bash
 
-# Install nginx
-sudo apt-get update
-sudo apt-get install -y nginx
-
-# Remove the default nginx configuration
-sudo rm /etc/nginx/sites-enabled/default
-
-# Create a new nginx configuration file
-cat > /etc/nginx/sites-available/hello-world <<EOF
-server {
-    listen 80 default_server;
-    server_name _;
-
-    location / {
-        root /var/www/html;
-        index index.html index.htm;
-        add_header Content-Type text/html;
-        return 200 'Hello World!';
-    }
-}
-EOF
-
-# Create a symbolic link to enable the new configuration
-sudo ln -s /etc/nginx/sites-available/hello-world /etc/nginx/sites-enabled/
-
-# Test the new configuration
-sudo nginx -t
-
-# Restart nginx
-sudo service nginx restart
+# Installing Nginx
+apt update
+apt install -y nginx
+echo "Hello World!" > /var/www/html/index.html
+service nginx restart
