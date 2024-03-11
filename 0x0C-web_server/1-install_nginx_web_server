@@ -5,6 +5,6 @@
 sudo apt-get update
 sudo apt-get -y install nginx
 echo 'Hello World!' > /var/www/html/index.html
-sudo service nginx start
+sudo service nginx restart
 #In case you encounter a Permission Denied to access /var/www/html/index.html use sudo chmod 777 /var/www/html -R
 #Ensure the installation is sone with sudo to avoid a password prompt
