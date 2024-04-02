@@ -3,10 +3,10 @@
 # Install nginx
 sudo apt-get update
 sudo apt-get -y install nginx
-echo 'Hello World!' > /var/www/html/index.html
+sudo echo 'Hello World!' > /var/www/html/index.html
 sudo sed -i '/listen 80 default_server/a   rewrite ^/redirect_me https://www.linkedin.com/ permanent;' /etc/nginx/sites-available/default
 
-echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/page_error_404.html >/dev/null
+sudo echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/page_error_404.html >/dev/null
 sudo sed -i '/error_page 404 /page_error_404.html;\nlocation = /page_error_404.html {\n   root /usr/share/nginx/html; \n   internal;\n}\n' /etc/nginx/sites-enabled/default
 sudo service nginx restart
 #Ensure you use sudo to create the custom 404 page.
