@@ -18,6 +18,9 @@ FILES=(
     "../0x0C-web_server/transfer"
     "../0x0C-web_server/server-check"
     "../0x0C-web_server/0-transfer_file"
+    "../0x0C-web_server/server-check"
+    "../0x0C-web_server/custom_404_page"
+    "../0x0C-web_server/redirect-check"
 )
 
 # Loop through each file and replace IP addresses
