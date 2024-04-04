@@ -9,5 +9,19 @@ sudo systemctl enable haproxy.service
 #Starting and runnig the proxy with the default configuration.
 sudo systemctl start haproxy.service
 
+sudo sed -i '1i\
+frontend http-in\n\
+    bind *:80\n\
+    mode http\n\
+    option http-keep-alive\n\
+    default_backend web-backend\n\
+\
+backend web-backend\n\
+    mode http\n\
+    balance roundrobin\n\
+    server web-01 35.153.194.178:80 check\n\
+    server web-02 54.144.238.145:80 check\
+' /etc/haproxy/haproxy.cfg
+
 #Examing the HAProxy
 sudo systemctl status haproxy.service
