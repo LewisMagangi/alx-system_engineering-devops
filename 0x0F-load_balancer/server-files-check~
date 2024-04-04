@@ -1,0 +1,1 @@
+ssh ubuntu@35.153.194.178 -i ~/.ssh/school 'ls ~/'

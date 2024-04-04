@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Check if the script is provided with the correct number of arguments
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 PATH_TO_FILE PATH_TO_SSH_KEY"
+    exit 1
+fi
+
+# Accessing arguments
+PATH_TO_FILE=$1
+PATH_TO_SSH_KEY=$2
+
+# Define predetermined values
+IP="35.153.194.178"
+USERNAME="ubuntu"
+
+# Transfer file using SCP with strict host key checking disabled
+scp -o StrictHostKeyChecking=no -i "$PATH_TO_SSH_KEY" "$PATH_TO_FILE" "$USERNAME@$IP:"
