@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#Configuring HAproxy so that it send traffic to web-01 and web-02
+sudo apt-get update
+sudo apt-get install haproxy
+
+#Enabling and starting the HAProxy
+sudo systemctl enable haproxy.service
+
+#Starting and runnig the proxy with the default configuration.
+sudo systemctl start haproxy.service
+
+#Examing the HAProxy
+sudo systemctl status haproxy.service
