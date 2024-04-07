@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script shows information about web servers of a domain.
+# This script shows information abou subdomains of my domain liquelaliqour.tech.
 info(){
     dig "$2"."$1"|awk -v sbd="$2" '/ANSWER SECTION:/{getline; print "The subdomain " sbd " is a " $4 " record and points to " $5}'
 }
