@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# Check if the script is provided with the correct number of arguments
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 OLD_IP_ADDRESS NEW_IP_ADDRESS"
+    exit 1
+fi
+
+# Accessing arguments
+OLD_IP_ADDRESS=$1
+NEW_IP_ADDRESS=$2
+
+# Define the list of files to update
+FILES=(
+    "0-use_a_private_key"
+    "1-create_ssh_key_pair"
+    "2-ssh_config"
+ )
+
+# Loop through each file and replace IP addresses
+for file in "${FILES[@]}"; do
+    # Check if the file exists
+    if [ -f "$file" ]; then
+        # Replace IP addresses with the new one
+        sed -i "s/$OLD_IP_ADDRESS/$NEW_IP_ADDRESS/g" "$file"
+    else
+        echo "File not found: $file"
+    fi
+done
+
+echo "IP addresses replaced: $OLD_IP_ADDRESS -> $NEW_IP_ADDRESS in the specified files."
