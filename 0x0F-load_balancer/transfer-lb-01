@@ -11,7 +11,7 @@ PATH_TO_FILE=$1
 PATH_TO_SSH_KEY=$2
 
 # Define predetermined values
-IP="54.85.21.155"
+IP="54.237.19.111"
 USERNAME="ubuntu"
 
 # Transfer file using SCP with strict host key checking disabled

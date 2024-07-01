@@ -12,12 +12,10 @@ NEW_IP_ADDRESS=$2
 
 # Define the list of files to update
 FILES=(
-    "connect-web-02"
-    "transfer-web-02"
-    "not_found_2"
-    "hello_world2"
-    "redirect-check-02"
-    "custom_404_page_02"
+    "connect-web-01"
+    "transfer-web-01"
+    "not_found"
+    "hello_world"
  )
 
 # Loop through each file and replace IP addresses
