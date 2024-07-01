@@ -18,6 +18,7 @@ FILES=(
     "server-check"
     "custom_404_page"
     "redirect-check"
+    "connect"
 )
 
 # Loop through each file and replace IP addresses
