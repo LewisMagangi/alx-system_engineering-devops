@@ -16,6 +16,7 @@ FILES=(
     "transfer-web-01"
     "not_found"
     "hello_world"
+    "../0x10-https_ssl/connect-web-01"
  )
 
 # Loop through each file and replace IP addresses

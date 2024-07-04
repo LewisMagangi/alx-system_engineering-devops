@@ -16,6 +16,7 @@ FILES=(
     "transfer-lb-01"
     "loadbalancer-file-check"
     "lb-check"
+    "../0x10-https_ssl/connect-lb-01"
  )
 
 # Loop through each file and replace IP addresses

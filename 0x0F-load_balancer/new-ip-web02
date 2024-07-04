@@ -18,6 +18,7 @@ FILES=(
     "hello_world2"
     "redirect-check-02"
     "custom_404_page_02"
+    "../0x10-https_ssl/connect-web-02"
  )
 
 # Loop through each file and replace IP addresses
