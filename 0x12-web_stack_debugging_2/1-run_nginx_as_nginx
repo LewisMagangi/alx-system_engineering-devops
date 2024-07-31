@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# A script to configure nginx  
 # Update nginx configuration to run as nginx user and listen on port 8080
 NGINX_CONF="/etc/nginx/nginx.conf"
 
