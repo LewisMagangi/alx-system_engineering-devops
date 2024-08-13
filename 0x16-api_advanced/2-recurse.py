@@ -6,7 +6,7 @@ If no results are found for the given subreddit, the function should return None
 
 import requests
 
-def top_ten(subreddit):
+def recurse(subreddit, hot_list=[]):
     url =  f"https://www.reddit.com/r/{subreddit}/about.json"
     headers = {'User-Agent': 'MyRedditClient/0.1 (by Jazzlike-Plum-929)'}
     response = requests.get(url, headers=headers)
