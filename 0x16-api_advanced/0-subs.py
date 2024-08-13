@@ -8,13 +8,17 @@ import requests
 
 
 def number_of_subscribers(subreddit):
-    url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {'User-Agent': 'MyRedditClient/0.1 (by Jazzlike-Plum-929)'}
-    response = requests.get(url, headers=headers)
+    #url = f"https://www.reddit.com/r/{subreddit}/about.json"
+    #headers = {'User-Agent': 'Custom'}
+    response = requests.get(
+        "https://www.reddit.com/r/{}/about.json".format(subreddit),
+         headers={"User-Agent": "Custom"},
+        )
     print(response)
 
     if response.status_code == 200:
-        data = response.json()
-        print(data)
+        #data = response.json()
+        return response.json().get("data").get("subscribers")
+        #print(data)
     else:
         return 0
