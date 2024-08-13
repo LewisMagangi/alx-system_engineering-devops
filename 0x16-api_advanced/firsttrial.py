@@ -8,10 +8,6 @@ import requests
 
 
 def number_of_subscribers(subreddit):
-    """
-    Function that queries the Reddit API
-    - If not a valid subreddit, return 0.
-    """
     # url = f"https://www.reddit.com/r/{subreddit}/about.json"
     # headers = {'User-Agent': 'Custom'}
     response = requests.get(
