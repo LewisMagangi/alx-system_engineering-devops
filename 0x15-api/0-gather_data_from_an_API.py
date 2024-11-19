@@ -13,10 +13,21 @@ def get_employee_to_do_progress(employee_id):
     base_url = 'https://jsonplaceholder.typicode.com'
     try:
         # Get employee information
-        user_response = requests.get(f'{base_url}/users/{employee_id}')
+        user_response = requests.get(f'{base_url}/users')
         user_response.raise_for_status()
-        user = user_response.json()
-        employee_name = user.get('name')
+        users = user_response.json()
+        employee_name = None
+
+        for user in users:
+            if user.get('id') == employee_id:
+                employee = user
+                break
+            
+        if not employee:
+            raise ValueError(f"No employee found with ID {employee_id}")
+
+        employee_name = employee.get('name')
+
 
         # Get todos for the employee
         todos_response = requests.get(f'{base_url}/todos?userId={employee_id}')
