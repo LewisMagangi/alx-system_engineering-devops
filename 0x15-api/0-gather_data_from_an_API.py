@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-For an employee ID, returns information about the todo list progress.
+For an employee ID, returns information about their TODO list progress.
+Uses JSONPlaceholder API to fetch employee and TODO data.
 """
 import requests
 import sys
@@ -8,26 +9,27 @@ import sys
 
 def get_employee_to_do_progress(employee_id):
     """
-    Fetch and display todo list progress for a given employee ID.
+    Fetch and display TODO list progress for a given employee ID.
+    Args:
+        employee_id: Integer ID of the employee
     """
     base_url = 'https://jsonplaceholder.typicode.com'
-    try:
-        # Get employee information
-        user_response = requests.get(f'{base_url}/users')
-        user_response.raise_for_status()
-        users = user_response.json()
-        employee_name = None
 
+    try:
+        # Get all users
+        users_response = requests.get(f'{base_url}/users')
+        users_response.raise_for_status()
+        users = users_response.json()
+
+        # Find the specific employee
+        employee = None
         for user in users:
             if user.get('id') == employee_id:
                 employee = user
                 break
-            
+
         if not employee:
             raise ValueError(f"No employee found with ID {employee_id}")
-
-        employee_name = employee.get('name')
-
 
         # Get todos for the employee
         todos_response = requests.get(f'{base_url}/todos?userId={employee_id}')
@@ -35,12 +37,15 @@ def get_employee_to_do_progress(employee_id):
         todos = todos_response.json()
 
         # Calculate progress
-        t_tasks = len(todos)
+        total_tasks = len(todos)
         completed_tasks = [task for task in todos if task.get('completed')]
-        no = len(completed_tasks)
+        num_completed = len(completed_tasks)
 
         # Display progress
-        print(f'Employee {employee_name} is done with tasks({no}/{t_tasks}):')
+        print(f'Employee {employee.get("name")} is done with tasks'
+              f'({num_completed}/{total_tasks}):')
+
+        # Display completed task titles
         for task in completed_tasks:
             print(f'\t {task.get("title")}')
 
@@ -56,6 +61,7 @@ if __name__ == '__main__':
     if len(sys.argv) != 2:
         print(f"Usage: {sys.argv[0]} <employee_id>", file=sys.stderr)
         sys.exit(1)
+
     try:
         employee_id = int(sys.argv[1])
         get_employee_to_do_progress(employee_id)
