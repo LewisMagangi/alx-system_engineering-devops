@@ -2,9 +2,9 @@
 """
 For an employee ID, returns information about their TODO list progress.
 """
+import json
 import requests
 import sys
-import json
 
 '''
 def get_employee_to_do_progress(employee_id):
