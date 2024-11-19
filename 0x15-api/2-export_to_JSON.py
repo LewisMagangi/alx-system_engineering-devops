@@ -40,7 +40,7 @@ def get_employee_to_do_progress(employee_id):
             print(f"\t {task.get('title')}")
 
         # Export to a csv file
-        
+
         file_name = f'{employee_id}.csv'
         with open(file_name, mode='w', newline='', encoding='utf-8') as file:
             writer = csv.writer(file, quoting=csv.QUOTE_ALL)
@@ -54,9 +54,9 @@ def get_employee_to_do_progress(employee_id):
 
         for task in todos:
             task_data = {
-                'task' : task.get('title'),
-                'completed' : task.get('completed'),
-                'username' : user_name
+                'task': task.get('title'),
+                'completed': task.get('completed'),
+                'username': user_name
                 }
             tasks_data.append(task_data)
 
