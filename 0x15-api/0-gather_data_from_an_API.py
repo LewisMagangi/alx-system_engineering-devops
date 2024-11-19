@@ -25,7 +25,7 @@ def get_employee_to_do_progress(employee_id):
 
         # Calculate progress
         t_tasks = len(todos)
-        completed_tasks = [task for task in todos if task['completed']]
+        completed_tasks = [task for task in todos if task.get('completed')]
         no = len(completed_tasks)
 
         # Display progress
