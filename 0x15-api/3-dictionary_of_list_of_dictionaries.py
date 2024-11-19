@@ -41,7 +41,6 @@ def export_all_employees_todos():
         with open('todo_all_employees.json', 'w') as jsonfile:
             json.dump(data_to_export, jsonfile, indent=2)
 
-        print("Todo list exported successfully to todo_all_employees.json")
         return data_to_export
 
     except requests.exceptions.RequestException as e:
