@@ -19,7 +19,7 @@ def get_employee_to_do_progress(employee_id):
         user_response = requests.get(f"{base_url}/users/{employee_id}")
         user_response.raise_for_status()
         user = user_response.json()
-        employee_name = user.get('name')
+        user_name = user.get('username')
 
         # Get todos for the employee
         todos_response = requests.get(f"{base_url}/todos?userId={employee_id}")
@@ -32,7 +32,7 @@ def get_employee_to_do_progress(employee_id):
         num = len(completed_tasks)
 
         # Display progress
-        print(f"Employee {employee_name} is done with tasks({num}/{total}):")
+        print(f"Employee {user_name} is done with tasks({num}/{total}):")
 
         # Display completed task titles
         for task in completed_tasks:
@@ -44,7 +44,7 @@ def get_employee_to_do_progress(employee_id):
             writer = csv.writer(file, quoting=csv.QUOTE_ALL)
 
             for task in todos:
-                writer.writerow([employee_id, employee_name,
+                writer.writerow([employee_id, user_name,
                                  task.get('completed'), task.get('title')])
 
     except requests.exceptions.RequestException as e:
