@@ -4,8 +4,9 @@ For an employee ID, returns information about their TODO list progress.
 """
 import requests
 import sys
+import json
 
-
+'''
 def get_employee_to_do_progress(employee_id):
     """
     Fetch and display TODO list progress for a given employee ID.
@@ -55,3 +56,20 @@ if __name__ == '__main__':
     except ValueError:
         print("Error: Employee ID must be an integer.", file=sys.stderr)
         sys.exit(1)
+'''
+
+
+if __name__ == "__main__":
+    response = requests.get("https://jsonplaceholder.typicode.com/users/" +
+                            sys.argv[1])
+    dicti = json.loads(response.text)
+    name = dicti.get('name')
+    response = requests.get("https://jsonplaceholder.typicode.com/todos/" +
+                            "?userId=" + sys.argv[1])
+    todos = json.loads(response.text)
+    tasks = len(todos)
+    completed = [task for task in todos if task.get('completed')]
+    done = len(completed)
+    print("Employee {} is done with tasks({}/{}):".format(name, done, tasks))
+    for task in completed:
+        print("\t", task.get('title'))
