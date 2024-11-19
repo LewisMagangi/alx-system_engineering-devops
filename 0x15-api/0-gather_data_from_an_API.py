@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
 For an employee ID, returns information about their TODO list progress.
-Uses JSONPlaceholder API to fetch employee and TODO data.
 """
 import requests
 import sys
@@ -10,44 +9,32 @@ import sys
 def get_employee_to_do_progress(employee_id):
     """
     Fetch and display TODO list progress for a given employee ID.
-    Args:
-        employee_id: Integer ID of the employee
     """
     base_url = 'https://jsonplaceholder.typicode.com'
 
     try:
-        # Get all users
-        users_response = requests.get(f'{base_url}/users')
-        users_response.raise_for_status()
-        users = users_response.json()
-
-        # Find the specific employee
-        employee = None
-        for user in users:
-            if user.get('id') == employee_id:
-                employee = user
-                break
-
-        if not employee:
-            raise ValueError(f"No employee found with ID {employee_id}")
+        # Get single user directly using their ID
+        user_response = requests.get(f"{base_url}/users/{employee_id}")
+        user_response.raise_for_status()
+        user = user_response.json()
+        employee_name = user.get('name')
 
         # Get todos for the employee
-        todos_response = requests.get(f'{base_url}/todos?userId={employee_id}')
+        todos_response = requests.get(f"{base_url}/todos?userId={employee_id}")
         todos_response.raise_for_status()
         todos = todos_response.json()
 
         # Calculate progress
-        total_tasks = len(todos)
+        total = len(todos)
         completed_tasks = [task for task in todos if task.get('completed')]
-        num_completed = len(completed_tasks)
+        num = len(completed_tasks)
 
         # Display progress
-        print(f'Employee {employee.get("name")} is done with tasks'
-              f'({num_completed}/{total_tasks}):')
+        print(f"Employee {employee_name} is done with tasks({num}/{total}):")
 
         # Display completed task titles
         for task in completed_tasks:
-            print(f'\t {task.get("title")}')
+            print(f"\t {task.get('title')}")
 
     except requests.exceptions.RequestException as e:
         print(f"Error: Failed to fetch data from API: {e}", file=sys.stderr)
